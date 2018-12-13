@@ -15,9 +15,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        Intent intent = getIntent();
-        getMessageFromTheMain = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_KEY).toString();
         secondActivitytextView = findViewById(R.id.second_textView);
+        Intent intent = getIntent();
+        getMessageFromTheMain = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_KEY);
         secondActivitytextView.setText(getMessageFromTheMain);
         if (savedInstanceState != null) {
             String saveState = savedInstanceState.getString(SECOND_KEY);

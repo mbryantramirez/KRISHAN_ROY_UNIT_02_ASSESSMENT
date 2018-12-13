@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 storeRandomNumber = randomGame.getRandomNumber();
                 String getEditTextText = inputEditText.getText().toString();
-                int intNumber = Integer.parseInt(getEditTextText);
-                if (storeRandomNumber == intNumber ) {
+                int intNumber = randomGame.stringToInt(getEditTextText);
+                if (randomGame.checkGuess(storeRandomNumber, randomGame.stringToInt(getEditTextText))) {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    intent.putExtra(MAIN_ACTIVITY_KEY, "Congratulations ! You have won!!");
+                    intent.putExtra(MAIN_ACTIVITY_KEY, randomGame.getStringResult(true));
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    intent.putExtra(MAIN_ACTIVITY_KEY, "Sorry ! Try again");
+                    intent.putExtra(MAIN_ACTIVITY_KEY, randomGame.getStringResult(false));
                     startActivity(intent);
                 }
             }
@@ -108,21 +108,23 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (item.getItemId()) {
+        switch (id) {
             case R.id.nav_phone:
                 Uri navPhone = Uri.parse("tel:2125551212");
                 Intent intent = new Intent(Intent.ACTION_DIAL, navPhone);
                 startActivity(intent);
+               break;
             case R.id.nav_sms:
                 Uri navSms = Uri.parse("sms:2125551212");
                 Intent intent1 = new Intent(Intent.ACTION_SENDTO, navSms);
                 startActivity(intent1);
+                break;
             case R.id.nav_map_location:
-                String loc = "40.7429595,-73.94192149999998"; // this is taking an input and then saving it
-                Uri addressUri = Uri.parse("geo:0,0?q=" + loc); // this strange looking code is turning the location input into the a geographic input
-                Intent intent2 = new Intent(Intent.ACTION_VIEW, addressUri); // and then we will turn move from the action view to the geographic input.
+                String loc = "40.7429595,-73.94192149999998";
+                Uri addressUri = Uri.parse("geo:0,0?q=" + loc);
+                Intent intent2 = new Intent(Intent.ACTION_VIEW, addressUri);
                 startActivity(intent2);
-
+            break;
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
