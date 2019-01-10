@@ -15,9 +15,11 @@ public class RandomGameTest {
     @Before
     public void setUp() throws Exception {
         randomGame = new RandomGame();
-
     }
 
+    /**
+     * This should be confirming that the number returned from the getRandomNumber() method is between 1 and 100 this test is just comparing the values to themselves
+     */
     @Test
     public void test_get_random_number_method() {
         int a = randomGame.getRandomNumber();

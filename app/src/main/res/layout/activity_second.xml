@@ -13,5 +13,6 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:textSize="40sp"/>
+<!-- This texrtColor hex number should be extracted into the colors.xml file-->
 
 </android.support.constraint.ConstraintLayout>

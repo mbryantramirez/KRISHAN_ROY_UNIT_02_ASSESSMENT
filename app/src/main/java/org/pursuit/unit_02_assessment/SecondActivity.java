@@ -28,9 +28,11 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        /**
+         * Youve already done this in your oncreate method you should be saving the string that is currently in your textview instead
+         */
         Intent intent = getIntent();
         getMessageFromTheMain = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_KEY).toString();
-        outState.putString(SECOND_KEY,
-                getMessageFromTheMain);
+        outState.putString(SECOND_KEY, getMessageFromTheMain);
     }
 }

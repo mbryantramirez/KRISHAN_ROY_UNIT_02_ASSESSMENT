@@ -41,12 +41,18 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 storeRandomNumber = randomGame.getRandomNumber();
                 String getEditTextText = inputEditText.getText().toString();
+                /**
+                 * unused variable
+                 */
                 int intNumber = randomGame.stringToInt(getEditTextText);
                 if (randomGame.checkGuess(storeRandomNumber, randomGame.stringToInt(getEditTextText))) {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     intent.putExtra(MAIN_ACTIVITY_KEY, randomGame.getStringResult(true));
                     startActivity(intent);
                 } else {
+                    /**
+                     * The logic here should set the text of the TextView in the current activity to the losing message not send the losing message to the next
+                     */
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     intent.putExtra(MAIN_ACTIVITY_KEY, randomGame.getStringResult(false));
                     startActivity(intent);
@@ -61,6 +67,9 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Uri fabEmail = Uri.parse("mailto:mail.pursuit.org?&subject=Email%20from%20Pursuit&body=This%20is%20my%20text!");
                 Intent intent = new Intent(Intent.ACTION_SENDTO, fabEmail);
+                /**
+                 *  mailIntent needs to have and subject and body text
+                 */
                 startActivity(intent);
             }
         });
@@ -117,6 +126,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_sms:
                 Uri navSms = Uri.parse("sms:2125551212");
                 Intent intent1 = new Intent(Intent.ACTION_SENDTO, navSms);
+                /**
+                 * you should be adding a message ("Welcome to Pursuit!) to the sms body
+                 */
                 startActivity(intent1);
                 break;
             case R.id.nav_map_location:

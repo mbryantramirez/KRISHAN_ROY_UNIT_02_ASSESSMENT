@@ -11,6 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <!-- background color string should be extracted into a colors.xml file -->
     <ImageView
         android:id="@+id/navigation_imageView"
         android:layout_width="wrap_content"
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_second_textview_text"/>
+    <!-- to make the email link clickable you should be using android:autoLink="all" or android:autoLink="email" -->
     <TextView
         android:id="@+id/email_textView"
         android:layout_width="wrap_content"
